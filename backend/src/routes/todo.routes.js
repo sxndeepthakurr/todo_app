@@ -3,9 +3,10 @@ const express=require('express');
 const router=express.Router();
 
 const {getTodos,createTodos,updateTodos,deleteTodo}=require("../controllers/todo.controller");
+const {validateTodo}=require("../middleware/validateTodo.middleware");
 
 router.get("/",getTodos);
-router.post("/",createTodos);
+router.post("/",validateTodo,createTodos);
 
 router.put("/:id",updateTodos);
 
